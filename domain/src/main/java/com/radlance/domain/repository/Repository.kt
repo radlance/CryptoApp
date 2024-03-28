@@ -5,6 +5,6 @@ import com.radlance.domain.entity.Currency
 import com.radlance.domain.entity.Market
 
 interface Repository {
-    suspend fun loadCurrencyInfo(): NetworkResult<Currency>
-    suspend fun loadMarketInfo(): NetworkResult<Market>
+    suspend fun loadCurrencyInfo(): NetworkResult<List<Currency>>
+    suspend fun loadMarketInfo(): NetworkResult<List<Market>>
 }

@@ -6,7 +6,7 @@ import com.radlance.domain.repository.Repository
 import javax.inject.Inject
 
 class LoadCurrencyInfoUseCase @Inject constructor(private val repository: Repository) {
-    suspend operator fun invoke(): NetworkResult<Currency> {
+    suspend operator fun invoke(): NetworkResult<List<Currency>> {
         return repository.loadCurrencyInfo()
     }
 }

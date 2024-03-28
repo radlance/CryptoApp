@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "CryptoApp"
 include(":app")
 include(":domain")
+include(":data")

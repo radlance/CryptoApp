@@ -6,7 +6,7 @@ import com.radlance.domain.repository.Repository
 import javax.inject.Inject
 
 class LoadMarketInfoUseCase @Inject constructor(private val repository: Repository) {
-    suspend operator fun invoke(): NetworkResult<Market> {
+    suspend operator fun invoke(): NetworkResult<List<Market>> {
         return repository.loadMarketInfo()
     }
 }
