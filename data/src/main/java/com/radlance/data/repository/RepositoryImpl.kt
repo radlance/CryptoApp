@@ -44,7 +44,15 @@ class RepositoryImpl @Inject constructor(private val cryptoApiService: CryptoApi
                     val priceInfo = priceList[i]
                     with(priceInfo) {
                         marketInfo.add(
-                            Market(price, lastUpdate, highDay, lowDay, fromSymbol, toSymbol)
+                            Market(
+                                price,
+                                lastUpdate,
+                                highDay,
+                                lowDay,
+                                fromSymbol,
+                                toSymbol,
+                                imageUrl
+                            )
                         )
                     }
                 }

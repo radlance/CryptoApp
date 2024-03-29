@@ -14,5 +14,7 @@ data class CoinPriceInfoDTO(
     @SerializedName("FROMSYMBOL")
     val fromSymbol: String,
     @SerializedName("TOSYMBOL")
-    val toSymbol: String
+    val toSymbol: String,
+    @SerializedName("IMAGEURL")
+    val imageUrl: String
 )
