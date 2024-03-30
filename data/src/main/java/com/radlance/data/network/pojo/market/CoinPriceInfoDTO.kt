@@ -6,7 +6,7 @@ data class CoinPriceInfoDTO(
     @SerializedName("PRICE")
     val price: Double,
     @SerializedName("LASTUPDATE")
-    val lastUpdate: String,
+    val lastUpdate: Long,
     @SerializedName("HIGHDAY")
     val highDay: Double,
     @SerializedName("LOWDAY")

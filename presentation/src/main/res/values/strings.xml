@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="coin_icon">coin icon</string>
+    <string name="slash">" / "</string>
+    <string name="no_internet_connection">no internet connection</string>
 
 </resources>

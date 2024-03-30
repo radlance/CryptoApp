@@ -2,7 +2,6 @@ package com.radlance.data.repository
 
 import com.google.gson.Gson
 import com.radlance.data.network.api.CryptoApiService
-import com.radlance.data.network.api.CryptoApiService.Companion.LIMIT
 import com.radlance.data.network.pojo.market.CoinPriceInfoDTO
 import com.radlance.data.network.pojo.market.RawDataDTO
 import com.radlance.domain.NetworkResult
@@ -19,7 +18,7 @@ class RepositoryImpl @Inject constructor(private val cryptoApiService: CryptoApi
             if (response.isSuccessful) {
                 val dataList = response.body()?.dataDTOList
                 val currencyList = mutableListOf<Currency>()
-                for (i in 0 until LIMIT) {
+                for (i in 0 until 15) {
                     val coinInfo = dataList!![i].coinInfoDTO
                     with(coinInfo) {
                         currencyList.add(Currency(id.toInt(), name, fullName, imageUrl))
@@ -36,13 +35,13 @@ class RepositoryImpl @Inject constructor(private val cryptoApiService: CryptoApi
 
     override suspend fun loadMarketInfo(): NetworkResult<List<Market>> {
         return try {
-            val response = cryptoApiService.loadFullPriceList()
-            val marketInfo = mutableListOf<Market>()
+            val fSymbolsList = loadCurrencyInfo().data!!.map { it.name }
+            val response = cryptoApiService.loadFullPriceList(fSymbolsList.joinToString(separator = ","))
             if (response.isSuccessful) {
                 val priceList = getPriceListFromRawData(response.body())
-                for (i in 0 until LIMIT) {
-                    val priceInfo = priceList[i]
-                    with(priceInfo) {
+                val marketInfo = mutableListOf<Market>()
+                for (element in priceList) {
+                    with(element) {
                         marketInfo.add(
                             Market(
                                 price,

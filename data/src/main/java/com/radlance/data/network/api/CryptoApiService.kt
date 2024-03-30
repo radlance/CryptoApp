@@ -8,16 +8,16 @@ import retrofit2.http.Query
 
 interface CryptoApiService {
     @GET("top/totalvolfull")
-    fun loadTopList(
+    suspend fun loadTopList(
         @Query("limit") limit: Int = LIMIT,
         @Query("tsym") toSymbol: String = TO_SYMBOL,
         @Query("ApiKey") apiKey: String = API_KEY
     ): Response<DataListDTO>
 
     @GET("pricemultifull")
-    fun loadFullPriceList(
-        @Query("limit") limit: Int = LIMIT,
-        @Query("tsym") toSymbol: String = TO_SYMBOL,
+    suspend fun loadFullPriceList(
+        @Query("fsyms") fSymbols: String,
+        @Query("tsyms") toSymbol: String = TO_SYMBOL,
         @Query("ApiKey") apiKey: String = API_KEY
     ): Response<RawDataDTO>
 

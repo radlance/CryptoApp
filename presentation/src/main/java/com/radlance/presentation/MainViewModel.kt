@@ -3,9 +3,10 @@ package com.radlance.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.radlance.domain.NetworkResult
-import com.radlance.domain.entity.Currency
-import com.radlance.domain.usecase.LoadCurrencyInfoUseCase
+import com.radlance.domain.entity.Market
+import com.radlance.domain.usecase.LoadMarketInfoUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,11 +15,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val loadCurrencyInfoUseCase: LoadCurrencyInfoUseCase
+    private val loadMarketInfoUseCase: LoadMarketInfoUseCase
 ) : ViewModel() {
     private val _currencyInfo =
-        MutableStateFlow<NetworkResult<List<Currency>>>(NetworkResult.Loading())
-    val currencyInfo: StateFlow<NetworkResult<List<Currency>>> = _currencyInfo.asStateFlow()
+        MutableStateFlow<NetworkResult<List<Market>>>(NetworkResult.Loading())
+    val currencyInfo: StateFlow<NetworkResult<List<Market>>> = _currencyInfo.asStateFlow()
 
     init {
         loadData()
@@ -26,8 +27,10 @@ class MainViewModel @Inject constructor(
 
     private fun loadData() {
         viewModelScope.launch {
-            _currencyInfo.value = NetworkResult.Loading()
-            _currencyInfo.value = loadCurrencyInfoUseCase()
+            while (true) {
+                _currencyInfo.value = loadMarketInfoUseCase()
+                delay(5000)
+            }
         }
     }
 }
