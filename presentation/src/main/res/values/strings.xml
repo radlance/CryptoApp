@@ -3,5 +3,10 @@
     <string name="coin_icon">coin icon</string>
     <string name="slash">" / "</string>
     <string name="no_internet_connection">no internet connection</string>
+    <string name="price">Цена: </string>
+    <string name="min_price">Минимум за день</string>
+    <string name="max_price">Максимум за день:</string>
+    <string name="last_offer">Последняя сделка:</string>
+    <string name="last_update">Обновлено:</string>
 
 </resources>

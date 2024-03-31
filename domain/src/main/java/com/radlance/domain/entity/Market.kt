@@ -7,7 +7,8 @@ data class Market(
     val lowDay: Double,
     val fromSymbol: String,
     val toSymbol: String,
-    val imageUrl: String
+    val imageUrl: String,
+    val lastMarket: String
 ) {
     fun getFullImageUrl(): String {
         return BASE_URL + imageUrl

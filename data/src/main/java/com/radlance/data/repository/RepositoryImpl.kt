@@ -50,7 +50,8 @@ class RepositoryImpl @Inject constructor(private val cryptoApiService: CryptoApi
                                 lowDay,
                                 fromSymbol,
                                 toSymbol,
-                                imageUrl
+                                imageUrl,
+                                lastMarket
                             )
                         )
                     }

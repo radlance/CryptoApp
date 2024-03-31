@@ -11,6 +11,7 @@ import com.radlance.presentation.utils.convertTimeStampToTime
 import com.squareup.picasso.Picasso
 
 class CurrencyListAdapter : RecyclerView.Adapter<CurrencyListAdapter.CurrencyListViewHolder>() {
+    var onItemClickListener: ((Market) -> Unit)? = null
     var marketInfoList = listOf<Market>()
         set(value) {
             val callBack = CurrencyListDiffCallBack(marketInfoList, value)
@@ -31,7 +32,11 @@ class CurrencyListAdapter : RecyclerView.Adapter<CurrencyListAdapter.CurrencyLis
     }
 
     override fun onBindViewHolder(holder: CurrencyListViewHolder, position: Int) {
-        holder.bind(marketInfoList[position], holder)
+        val market = marketInfoList[position]
+        holder.bind(market, holder)
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.invoke(market)
+        }
     }
 
     class CurrencyListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
