@@ -91,7 +91,10 @@ Retrofit, Hilt, Coroutines, MVVM, и Clean Architecture.
 ---
 
 ## Установка
-Для установки приложения загрузите **[APK-файл](app-debug-androidTest.apk)**
+Для установки приложения загрузите **[apk-файл](https://github.com/radlance/CryptoApp/raw/master/app/release/app-release.apk)**
 и откройте его на своем устройстве Android.
 Альтернативно вы можете
 клонировать репозиторий и создать приложение с помощью Android Studio.
+```
+git clone git@github.com:radlance/CryptoApp.git
+```
