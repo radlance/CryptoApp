@@ -96,5 +96,5 @@ Retrofit, Hilt, Coroutines, MVVM, и Clean Architecture.
 Альтернативно вы можете
 клонировать репозиторий и создать приложение с помощью Android Studio.
 ```
-git clone git@github.com:radlance/CryptoApp.git
+git clone https://github.com/radlance/CryptoApp.git
 ```
